@@ -1,32 +1,32 @@
-# %check_name% - Name der Prüfung
+# %check_name% - naam van de controle
 # %description% - description of the check
-# %vl% - Verstöße
-# %verbose% - zusätzliche Informationen
-# %player% - Spielername
-# [alert] - spezieller Befehl zur Alarmierung
-# [webhook] - spezieller Befehl für die Alarmierung an den Discord-Webhook
-# [proxy] - spezieller Befehl zur Alarmierung anderer Server, die mit Ihrem Proxy verbunden sind (BungeeCord/Velocity)
+# %vl% - overtredingen
+# %verbose% - extra informatie
+# %player% - spelersnaam
+# [alert] - speciaal commando om te waarschuwen
+# [webhook] - speciaal commando om discord webhook te waarschuwen
+# [proxy] - speciaal commando om te waarschuwen voor andere servers die verbonden zijn met je proxy (BungeeCord/Velocity)
 Punishments:
   Simulation:
-    # Nach wie vielen Sekunden soll ein Verstoß entfernt werden?
+    # Na hoeveel seconden moet een overtreding worden verwijderd?
     remove-violations-after: 300
-    # In diesem Abschnitt werden alle Prüfungen mit dem Namen gefunden,
-    # Um eine Prüfung auszuschließen, die sonst übereinstimmen würde, setzen Sie ein Ausrufezeichen vor den Namen
-    # Zum Beispiel, !BadPacketsN
+    # Deze sectie zal overeenkomen met alle controles met de naam,
+    # Om een controle uit te sluiten die anders wel overeen zou komen, zet je een uitroepteken voor de naam.
+    # Bijvoorbeeld, !BadPacketsN
     checks:
       - "Simulation"
       - "GroundSpoof"
       - "Timer"
       - "TimerLimit"
       - "NoFall"
-    # Schwellenwert:Intervall Befehl
+    # Drempel: Interval-commando
     #
-    # Beispiel, um den Spieler mit der Meldung "Falsche Bewegung!" nach 100 Verstößen zu kicken, ohne Intervall
-    # Befehle:
-    # - "100:0 kick %player% incorrect movement!"
-    # 0 bedeutet genau einmal ausführen
+    # Voorbeeld, om de speler te schoppen met het bericht "verkeerde beweging!" na 100 overtredingen, zonder interval
+    # commando's:
+    # - "100:0 kick %player% incorrecte beweging!"
+    # 0 betekent precies één keer uitvoeren
     # - "100:50 say %player% is cheating"
-    # Ausführen, wenn der Benutzer Flagge 100 trifft, und danach jede 50. Flagge nach 100
+    # Uitvoeren wanneer de gebruiker flag 100 raakt, en daarna elke 50e flag na 100
     #
     commands:
       - "100:40 [alert]"
@@ -108,7 +108,7 @@ Punishments:
     commands:
       - "20:40 [alert]"
       - "1:1 [log]"
-  # Ab 2.2.10 gibt es keine AutoClicker-Prüfungen mehr und dies ist ein Platzhalter. Skull wird in Zukunft AutoClicker-Prüfungen einbauen.
+  # Vanaf 2.2.10 zijn er geen AutoClicker-controles en is dit een placeholder. Skull zal in de toekomst AutoClicker-controles toevoegen.
   Autoclicker:
     remove-violations-after: 300
     checks:

@@ -1,32 +1,32 @@
-# %check_name% - Name der Prüfung
+# %check_name% - Nom de la vérification
 # %description% - description of the check
-# %vl% - Verstöße
-# %verbose% - zusätzliche Informationen
-# %player% - Spielername
-# [alert] - spezieller Befehl zur Alarmierung
-# [webhook] - spezieller Befehl für die Alarmierung an den Discord-Webhook
-# [proxy] - spezieller Befehl zur Alarmierung anderer Server, die mit Ihrem Proxy verbunden sind (BungeeCord/Velocity)
+# %vl% - Violations
+# %verbose% - Informations supplémentaires
+# %player% - Nom du joueur
+# [alert] - Commande spéciale pour alerter
+# [webhook] - Commande spéciale pour alerter via un Webhook Discord
+# [proxy] - Commande spéciale pour alerter les autres serveurs connectés à votre proxy (BungeeCord/Velocity)
 Punishments:
   Simulation:
-    # Nach wie vielen Sekunden soll ein Verstoß entfernt werden?
+    # Au bout de combien de secondes une violation doit-elle être supprimée ?
     remove-violations-after: 300
-    # In diesem Abschnitt werden alle Prüfungen mit dem Namen gefunden,
-    # Um eine Prüfung auszuschließen, die sonst übereinstimmen würde, setzen Sie ein Ausrufezeichen vor den Namen
-    # Zum Beispiel, !BadPacketsN
+    # Cette section correspondra à toutes les vérifications portant le nom indiqué,
+    # Pour exclure une vérification qui serait sinon correspondante, placez un point d'exclamation devant le nom.
+    # Par exemple, !BadPacketsN
     checks:
       - "Simulation"
       - "GroundSpoof"
       - "Timer"
       - "TimerLimit"
       - "NoFall"
-    # Schwellenwert:Intervall Befehl
+    # Limite : Intervale entre chaque Commande
     #
-    # Beispiel, um den Spieler mit der Meldung "Falsche Bewegung!" nach 100 Verstößen zu kicken, ohne Intervall
-    # Befehle:
-    # - "100:0 kick %player% incorrect movement!"
-    # 0 bedeutet genau einmal ausführen
-    # - "100:50 say %player% is cheating"
-    # Ausführen, wenn der Benutzer Flagge 100 trifft, und danach jede 50. Flagge nach 100
+    # Par exemple, pour exclure le joueur avec le message "Mouvement incorrect !" après 100 violations, sans intervale
+    # commands:
+    # - "100:0 kick %player% Mouvement incorrect !"
+    # 0 pour exécuter qu'une seule fois
+    # - "100:50 say %player% est en train de tricher !"
+    # Exécuter lorsque l'utilisateur atteint 100 violations, puis toutes les 50 violations suivantes après les 100 violations.
     #
     commands:
       - "100:40 [alert]"
@@ -108,7 +108,7 @@ Punishments:
     commands:
       - "20:40 [alert]"
       - "1:1 [log]"
-  # Ab 2.2.10 gibt es keine AutoClicker-Prüfungen mehr und dies ist ein Platzhalter. Skull wird in Zukunft AutoClicker-Prüfungen einbauen.
+  # A partir de la version 2.2.10, il n'y a plus de vérifications pour AutoClicker et c'est un placeholder. Skull inclura des vérifications AutoClicker dans le futur.
   Autoclicker:
     remove-violations-after: 300
     checks:

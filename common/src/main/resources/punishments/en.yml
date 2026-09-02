@@ -1,32 +1,36 @@
-# %check_name% - Name der Prüfung
+# %check_name% - name of the check
 # %description% - description of the check
-# %vl% - Verstöße
-# %verbose% - zusätzliche Informationen
-# %player% - Spielername
-# [alert] - spezieller Befehl zur Alarmierung
-# [webhook] - spezieller Befehl für die Alarmierung an den Discord-Webhook
-# [proxy] - spezieller Befehl zur Alarmierung anderer Server, die mit Ihrem Proxy verbunden sind (BungeeCord/Velocity)
+# %vl% - violations
+# %verbose% - extra information
+# %player% - player name
+# [alert] - special command to alert
+# [webhook] - special command to alert to discord webhook
+# [proxy] - special command to alert to other servers connected to your proxy (BungeeCord/Velocity)
+
 Punishments:
   Simulation:
-    # Nach wie vielen Sekunden soll ein Verstoß entfernt werden?
+    # After how many seconds should a violation be removed?
     remove-violations-after: 300
-    # In diesem Abschnitt werden alle Prüfungen mit dem Namen gefunden,
-    # Um eine Prüfung auszuschließen, die sonst übereinstimmen würde, setzen Sie ein Ausrufezeichen vor den Namen
-    # Zum Beispiel, !BadPacketsN
+    # This section will match all checks with the name,
+    # To exclude a check that would otherwise be matched, put an exclamation mark in front of the name
+    # For example, !BadPacketsN
     checks:
       - "Simulation"
       - "GroundSpoof"
       - "Timer"
       - "TimerLimit"
       - "NoFall"
-    # Schwellenwert:Intervall Befehl
+    # Threshold:Interval Command
     #
-    # Beispiel, um den Spieler mit der Meldung "Falsche Bewegung!" nach 100 Verstößen zu kicken, ohne Intervall
-    # Befehle:
-    # - "100:0 kick %player% incorrect movement!"
-    # 0 bedeutet genau einmal ausführen
-    # - "100:50 say %player% is cheating"
-    # Ausführen, wenn der Benutzer Flagge 100 trifft, und danach jede 50. Flagge nach 100
+    # N is the active violation count required to run the command.
+    # Active violations are counted inside the remove-violations-after window.
+    # M > 0 runs at N, then N+M, N+2M, ...
+    # M = 0 runs once when N is reached.
+    #
+    # Examples:
+    # - "100:0 kick %player% incorrect movement!"   fires once on flag 100
+    # - "100:50 say %player% is cheating"           fires on flags 100, 150, 200, ...
+    # - "5:3 [alert]"                               fires on flags 5, 8, 11, 14, ...
     #
     commands:
       - "100:40 [alert]"
@@ -108,7 +112,7 @@ Punishments:
     commands:
       - "20:40 [alert]"
       - "1:1 [log]"
-  # Ab 2.2.10 gibt es keine AutoClicker-Prüfungen mehr und dies ist ein Platzhalter. Skull wird in Zukunft AutoClicker-Prüfungen einbauen.
+  # As of 2.2.10, there are no AutoClicker checks and this is a placeholder. Skull will include AutoClicker checks in the future.
   Autoclicker:
     remove-violations-after: 300
     checks:

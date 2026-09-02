@@ -1,33 +1,31 @@
-# %check_name% - Name der Prüfung
-# %description% - description of the check
-# %vl% - Verstöße
-# %verbose% - zusätzliche Informationen
-# %player% - Spielername
-# [alert] - spezieller Befehl zur Alarmierung
-# [webhook] - spezieller Befehl für die Alarmierung an den Discord-Webhook
-# [proxy] - spezieller Befehl zur Alarmierung anderer Server, die mit Ihrem Proxy verbunden sind (BungeeCord/Velocity)
+# %check_name% - Kontrolün ismi
+# %description% - Kontrolün açıklaması
+# %vl% - Yapılan ihlaller
+# %verbose% - Ekstra bilgilendirme
+# %player% - Oyuncu ismi
+# [alert] - Uyarılar için bunu kullanın
+# [webhook] - Discord webhook için bunu kullanın
+# [proxy] - Proxy'nize bağlı diğer sunuculara uyarı göndermek için bunu kullanın (BungeeCord/Velocity)
 Punishments:
   Simulation:
-    # Nach wie vielen Sekunden soll ein Verstoß entfernt werden?
+    # Kaç saniye sonra ihlaller kaldırılsın?
     remove-violations-after: 300
-    # In diesem Abschnitt werden alle Prüfungen mit dem Namen gefunden,
-    # Um eine Prüfung auszuschließen, die sonst übereinstimmen würde, setzen Sie ein Ausrufezeichen vor den Namen
-    # Zum Beispiel, !BadPacketsN
+    # Bu bölüm, aşağıdaki adlara sahip tüm kontrollerle eşleşecektir,
+    # Aksi takdirde eşleşecek bir denetimi hariç tutmak için, isminin önüne ünlem işareti koyun
+    # Örnek olarak, !BadPacketsN
     checks:
       - "Simulation"
       - "GroundSpoof"
       - "Timer"
       - "TimerLimit"
       - "NoFall"
-    # Schwellenwert:Intervall Befehl
+    # Eşik:Aralık Komutu
     #
-    # Beispiel, um den Spieler mit der Meldung "Falsche Bewegung!" nach 100 Verstößen zu kicken, ohne Intervall
-    # Befehle:
-    # - "100:0 kick %player% incorrect movement!"
-    # 0 bedeutet genau einmal ausführen
-    # - "100:50 say %player% is cheating"
-    # Ausführen, wenn der Benutzer Flagge 100 trifft, und danach jede 50. Flagge nach 100
-    #
+    # Örnek: 100 ihlalde "yanlış hareket!" mesajıyla oyuncuyu atmak için, aralık komutu olmadan:
+    # - "100:0 kick %player% Yanlış hareket!"
+    # 0, tam olarak bir kez çalıştırılmasını ifade eder
+    # - "100:50 say %player% Hile yapıyor!"
+    # Kullanıcı 100 işaretine ulaştığında çalışır ve bundan sonra, 100'ün üzerindeki her 50. işarette çalışır
     commands:
       - "100:40 [alert]"
       - "1:1 [log]"
@@ -108,7 +106,7 @@ Punishments:
     commands:
       - "20:40 [alert]"
       - "1:1 [log]"
-  # Ab 2.2.10 gibt es keine AutoClicker-Prüfungen mehr und dies ist ein Platzhalter. Skull wird in Zukunft AutoClicker-Prüfungen einbauen.
+  # 2.2.10 itibarıyla, AutoClicker denetimleri yoktur ve bu bir yer tutucudur. Skull, gelecekte AutoClicker denetimlerini dahil edecektir.
   Autoclicker:
     remove-violations-after: 300
     checks:

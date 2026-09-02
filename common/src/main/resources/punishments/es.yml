@@ -1,32 +1,32 @@
-# %check_name% - Name der Prüfung
+# %check_name% - nombre de la comprobación
 # %description% - description of the check
-# %vl% - Verstöße
-# %verbose% - zusätzliche Informationen
-# %player% - Spielername
-# [alert] - spezieller Befehl zur Alarmierung
-# [webhook] - spezieller Befehl für die Alarmierung an den Discord-Webhook
-# [proxy] - spezieller Befehl zur Alarmierung anderer Server, die mit Ihrem Proxy verbunden sind (BungeeCord/Velocity)
+# %vl% - violaciones
+# %verbose% - informacion extra
+# %player% - nombre del jugador
+# [alert] - comando especial para alertar
+# [webhook] - comando especial para alertar mediante un webhook de Discord
+# [proxy] - special command to alert to other servers connected to your proxy (BungeeCord/Velocity)
 Punishments:
   Simulation:
-    # Nach wie vielen Sekunden soll ein Verstoß entfernt werden?
+    # ¿Después de cuantos segundos deberíamos quitar una violación?
     remove-violations-after: 300
-    # In diesem Abschnitt werden alle Prüfungen mit dem Namen gefunden,
-    # Um eine Prüfung auszuschließen, die sonst übereinstimmen würde, setzen Sie ein Ausrufezeichen vor den Namen
-    # Zum Beispiel, !BadPacketsN
+    # Esta sección incluirá todas las comprobaciones con el nombre
+    # Para excluir una comprobación que de otro modo coincidiría, pon un signo de exclamación en frente del nombre
+    # Por ejemplo: !BadPacketsN
     checks:
       - "Simulation"
       - "GroundSpoof"
       - "Timer"
       - "TimerLimit"
       - "NoFall"
-    # Schwellenwert:Intervall Befehl
+    # Límite:Intervalo Comando
     #
-    # Beispiel, um den Spieler mit der Meldung "Falsche Bewegung!" nach 100 Verstößen zu kicken, ohne Intervall
-    # Befehle:
-    # - "100:0 kick %player% incorrect movement!"
-    # 0 bedeutet genau einmal ausführen
+    # Por ejemplo, para expulsar al jugador con el mensaje "movimiento incorrecto!" después de 100 violaciones sin intervalo:
+    # commands:
+    # - "100:0 kick %player% movimiento incorrecto!"
+    # 0 significa ejecutar exactamente una vez
     # - "100:50 say %player% is cheating"
-    # Ausführen, wenn der Benutzer Flagge 100 trifft, und danach jede 50. Flagge nach 100
+    # Ejecutar cuando el jugador alcance el indicador número 100, y después de eso, cada 50 indicadores después de 100
     #
     commands:
       - "100:40 [alert]"
@@ -108,7 +108,8 @@ Punishments:
     commands:
       - "20:40 [alert]"
       - "1:1 [log]"
-  # Ab 2.2.10 gibt es keine AutoClicker-Prüfungen mehr und dies ist ein Platzhalter. Skull wird in Zukunft AutoClicker-Prüfungen einbauen.
+  # A partir de 2.2.10, no hay ninguna comprobación de AutoClicker y esto es un placeholder.
+  # Skull incluirá revisiones de AutoClicker en el futuro.
   Autoclicker:
     remove-violations-after: 300
     checks:
