@@ -1,13 +1,16 @@
 # ===========================================================================
-#  Postgres 后端设置
+#  Postgres-backendinstellingen.
 #
-#  Postgres 支持多服务器部署（多个 Skull 实例写入同一个中央数据库）。
-#  运行时需要 Postgres JDBC 驱动；若驱动缺失，后端会在启动时自我禁用，
-#  指向此后端的路由会回退到其他已配置的后端。
+#  Postgres ondersteunt multi-server-deployments (meerdere Skull-instances
+#  die naar één centrale DB schrijven). Vereist het Postgres JDBC-stuur-
+#  programma in runtime; als de driver ontbreekt, schakelt het backend
+#  zichzelf uit bij het starten en valt routing dat hierheen wees terug op
+#  zijn fallback.
 # ===========================================================================
 
-# 所有键都在 `postgres:` 下，使本文件的 keyspace 不会在 Configuralize 把
-# 所有 yml 合并到同一个全局命名空间时与其他后端文件冲突。
+# Alle sleutels staan onder `postgres:` zodat de keyspace van dit bestand
+# niet botst met zustertbestanden per backend wanneer Configuralize ze
+# samenvoegt in één globale namespace.
 postgres:
   host: "localhost"
   port: 5432
@@ -31,12 +34,13 @@ postgres:
     # Maximum time to wait for a connection from the pool before failing.
     connection-timeout-ms: 5000
 
-  # 在 `?` 之后追加的额外 URL 参数。除非确有特殊需要，否则保持为空。
+  # Extra URL-parameters die na `?` worden toegevoegd. Laat leeg tenzij je
+  # iets specifieks nodig hebt.
   extra-jdbc-params: ""
 
   batch-flush-cap: 256
 
-  # 表名覆盖。默认值见下方。
+  # Overrides voor tabelnamen. Defaults hieronder.
   tables:
     meta: skull_meta
     checks: skull_checks
@@ -45,6 +49,6 @@ postgres:
     violations: skull_violations
     settings: skull_settings
 
-# 模式标记 — 参见 config.yml 顶部的注释。
+# Schemamarkers — zie de header-comment in config.yml.
 config-flavor: V2
 config-version: 2
